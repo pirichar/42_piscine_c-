@@ -4,6 +4,8 @@ cc = c++
 
 CFLAGS = -Wall -Wextra -Werror
 
+C2FLAGS = -Wall -Wextra -Werror -lc++
+
 SRC = megaphone.cpp
 
 OBJ = $(SRC:.cpp=.o)
@@ -12,7 +14,7 @@ all :$(NAME)
 
 $(NAME): $(OBJ)
 	@echo "\033[0;33mCompiling..."
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	$(CC) $(C2FLAGS) $(OBJ) -o $(NAME)
 	@echo "\033[0m"
 
 .cpp.o:
