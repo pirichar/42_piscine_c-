@@ -1,4 +1,4 @@
-c++ -Wall -Werror -Wextra ./*.cpp ./*.hpp
+c++ -Wall -Werror -Wextra ./*.cpp ./*.hpp 
 
 
 ./a.out 
