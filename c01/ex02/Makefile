@@ -1,4 +1,4 @@
-NAME = megaphone
+NAME = hiThisBrain
 
 cc = c++
 
@@ -6,14 +6,14 @@ CFLAGS = -Wall -Wextra -Werror
 
 C2FLAGS = -Wall -Wextra -Werror -lc++ -std=c++98
 
-SRC = megaphone.cpp
+SRC = main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
 all :$(NAME)
 
 $(NAME): $(OBJ)
-	@echo "\033[0;33mCompiling..."
+	@echo "\033[0;33mCompiling...\033[0m"
 	$(CC) $(C2FLAGS) $(OBJ) -o $(NAME)
 	@echo "\033[0m"
 

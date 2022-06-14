@@ -1,0 +1,6 @@
+make
+
+./hiThisBrain
+
+
+make fclean

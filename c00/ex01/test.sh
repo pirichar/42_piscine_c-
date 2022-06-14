@@ -1,6 +1,7 @@
-c++ -Wall -Werror -Wextra ./*.cpp ./*.hpp 
+make
 
 
-./a.out 
+./phonebook
+ 
 
-rm a.out *.gch
+make fclean

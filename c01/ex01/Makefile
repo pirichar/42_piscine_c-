@@ -1,4 +1,4 @@
-NAME = megaphone
+NAME = moarBrainz
 
 cc = c++
 
@@ -6,7 +6,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 C2FLAGS = -Wall -Wextra -Werror -lc++ -std=c++98
 
-SRC = megaphone.cpp
+SRC = main.cpp zombieHorde.cpp Zombie.Class.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
