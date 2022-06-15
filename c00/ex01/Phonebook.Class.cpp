@@ -49,28 +49,33 @@ void Phonebook::_getInput(void){
 	std::cout << "Please provide command (ADD, SEARCH, EXIT) : ";
 	std::cin >> buffer;
 	//if user type add :
-	if (buffer == "ADD")
+	while(std::cin.good())
 	{
-		if(this->_nbContact < 8){
-			this->array[this->_nbContact].createContact();
-			std::cout << "Contact created at position "<< _nbContact << std::endl;
-			this->_nbContact++;
+		if (buffer == "ADD")
+		{
+			if(this->_nbContact < 8){
+				this->array[this->_nbContact].createContact();
+				std::cout << "Contact created at position "<< _nbContact << std::endl;
+				this->_nbContact++;
+				}
+			else{
+				this->_updateContact();
+				this->array[0].createContact();
 			}
-		else{
-			this->_updateContact();
-			this->array[0].createContact();
+		}
+		else if (buffer =="SEARCH")
+		{
+			this->_SearchContact();
+		}
+		else if (std::cin.eof()){
+			continue;
+		}
+		else if (buffer == "EXIT")
+		{
+			std::cout << "Byebye we deleted all of your data for safety...lulz...\nWhat a useless Phonebook I am" << std::endl;
+			break;
 		}
 	}
-	else if (buffer =="SEARCH")
-	{
-		this->_SearchContact();
-	}
-	else if (buffer == "EXIT")
-	{
-		std::cout << "Byebye we deleted all of your data for safety...lulz...\nWhat a useless Phonebook I am" << std::endl;
-		return;
-	}
-	this->_getInput();
 }
 
 /* Les constructeurs et les destructeurs en cpp n'ont pas de type de retour

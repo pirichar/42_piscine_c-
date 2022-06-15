@@ -1,0 +1,6 @@
+make
+
+./unnecessaryViolence
+
+
+make fclean

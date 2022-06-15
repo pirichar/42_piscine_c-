@@ -1,12 +1,10 @@
-NAME = hiThisBrain
+NAME = unnecessaryViolence
 
-CC = c++
+CXX = clang++
 
-CFLAGS = -Wall -Wextra -Werror
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-C2FLAGS = -Wall -Wextra -Werror -lc++ -std=c++98
-
-SRC = main.cpp
+SRC = main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -14,12 +12,12 @@ all :$(NAME)
 
 $(NAME): $(OBJ)
 	@echo "\033[0;33mCompiling...\033[0m"
-	$(CC) $(C2FLAGS) $(OBJ) -o $(NAME)
+	$(CXX) $(OBJ) -o $(NAME)
 	@echo "\033[0m"
 
 .cpp.o:
 	@echo "\033[0;32mGenerating obj..."
-	$(CC) $(CFLAGS) -c $<
+	$(CXX) $(CXXFLAGS) -c $<
 	@echo "\033[0m"
 
 clean:

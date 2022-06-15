@@ -18,7 +18,6 @@ class Phonebook{
 		void	_addContact(void);
 		void	_getInput(void);
 		void	_SearchContact(void) const;
-		void	_searchContact(void) const;
 		void	_updateContact(void);
 		//add contact function
 			//call a new contact class and put it into the array?
