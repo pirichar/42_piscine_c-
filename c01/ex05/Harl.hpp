@@ -9,15 +9,15 @@ class Harl{
 		Harl(void);
 		~Harl(void);
 
-	void	complain(std::string level);
+	void	complain(const std::string& level) const;
 
 	private:
-		void	_debug(void);
-		void	_info(void);
-		void	_warning(void);
-		void	_error(void);
+		void	_debug(void) const;
+		void	_info(void) const;
+		void	_warning(void) const;
+		void	_error(void) const;
 		std::string levels[4];
-   		void (Harl::*actions[4])();
+   		void (Harl::*actions[4])() const;
 
 };
 
