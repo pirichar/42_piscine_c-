@@ -1,4 +1,4 @@
-NAME = fixed
+NAME = first_usefull_class
 
 CXX = clang++
 

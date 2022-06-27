@@ -1,4 +1,4 @@
-NAME = fixed
+NAME = now_we_can_talk
 
 CXX = clang++
 
