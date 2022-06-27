@@ -35,7 +35,7 @@ class Fixed{
 		Fixed	operator/(const Fixed&) const;
 
 		//4 opérateurs d'incrémentations
-		Fixed	operator++(int);
+		Fixed	operator++(int); 
 		Fixed	operator--(int);
 		Fixed&	operator++();
 		Fixed&	operator--();
