@@ -8,6 +8,7 @@ Fixed::Fixed() : value(0){
 Fixed::Fixed(const int entier) : value(entier << bits){
 	// std::cout << ("Int constructor callded") << std::endl;
 }
+//This funny method is just creating a new int with the informations of the float inside
 Fixed::Fixed(const float flottant) : value((int)roundf(flottant * (float)(1 << bits))){
 
 	// std::cout << ("Float constructor callded") << std::endl;
@@ -39,22 +40,12 @@ void	Fixed::setRawBits (int const raw){
 
 /*From int to float from float to int*/
 float	Fixed::toFloat(void) const{
-	return (float)this->value / (float)(1 << bits);
+	return (float)this->value / (float)(1 << bits);//divisé par 2 à la 8
 }
 int		Fixed::toInt(void) const{
-	return this->value >> bits;
+	return this->value >> bits; //multiplié par 2 à la 8
 }
 
-/*to overload an operator you need to use the keyword operator 
-//followed by the actual operator you want to overload
-//we need to give the function 2 parameters to operate
-//The first is the actual output string 
-//the second is a reference to our object*/
-std::ostream& operator<<(std::ostream& s, const Fixed& value){
-
-	s << value.toFloat();
-	return s;
-}
 /*6 Comp operators*/
 bool	Fixed::operator>(const Fixed& to_cmp) const{
 	return(getRawBits() > to_cmp.getRawBits());
@@ -95,7 +86,7 @@ Fixed	Fixed::operator*(const Fixed& to_add) const{
 	Fixed rtn;
 
 	long result = (this->getRawBits() * to_add.getRawBits());
-	rtn.setRawBits((int)result >> bits);
+	rtn.setRawBits((int)result >> bits); //here you have to bitshift in order to set back the number to 24.8 
 	return rtn;
 }
 Fixed	Fixed::operator/(const Fixed& to_add) const{
@@ -145,4 +136,15 @@ Fixed& Fixed::max(Fixed &f1, Fixed& f2){
 }
 const Fixed& Fixed::max(const Fixed &f1, const Fixed& f2){
 	return (f1 > f2 ? f1:f2);
+}
+
+/*to overload an operator you need to use the keyword operator 
+//followed by the actual operator you want to overload
+//we need to give the function 2 parameters to operate
+//The first is the actual output string 
+//the second is a reference to our object*/
+std::ostream& operator<<(std::ostream& s, const Fixed& value){
+
+	s << value.toFloat();
+	return s;
 }
