@@ -1,6 +1,6 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
-
+#include "FragTrap.hpp"
 /* ex00 main
 int main(void){
 
@@ -20,7 +20,7 @@ int main(void){
 	ClapTrap popa("steve");
 }*/
 
-
+/*ScavTrap main
 int main(void){
 	std::cout << "Constructor here\n";
 	ClapTrap clap("BELLATRIX");
@@ -59,5 +59,20 @@ int main(void){
 	copy1.guardGate();
 	popa1.guardGate();
 	std::cout << "Destructors\n";
+}*/
 
+int main(void){
+	std::cout << "--------Constructor here--------\n";
+	FragTrap fraggy;
+	std::cout << "--------FragTrap attack here--------\n";
+	fraggy.attack("POPA");
+	std::cout << "--------FragTrap healing here--------\n";
+	fraggy.beRepaired(10);
+	std::cout << "--------FragTrap take damage here--------\n";
+	fraggy.takeDamage(10);
+	std::cout << "--------FragTrap copy constructor--------\n";
+	FragTrap paul = fraggy;
+	std::cout << "--------HighFive test--------\n";
+	paul.HighFivesGuys();
+	std::cout << "--------Destructors--------\n";
 }

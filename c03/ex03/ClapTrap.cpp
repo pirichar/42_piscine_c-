@@ -1,10 +1,10 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap() : name("John DOE"), hitPoints(100), energyPoints(50), attackDamage(20){
+ClapTrap::ClapTrap() : name("John DOE"), hitPoints(100), energyPoints(100), attackDamage(30){
 	std::cout << "\e[0;34mClapTrap John DOE constructor called, next time provide a name\e[0m" << std::endl;
 }
 
-ClapTrap::ClapTrap(const std::string& desired_name) : name(desired_name), hitPoints(100), energyPoints(50), attackDamage(20){
+ClapTrap::ClapTrap(const std::string& desired_name) : name(desired_name), hitPoints(100), energyPoints(100), attackDamage(30){
 	std::cout << "\e[0;34mClapTrap name constructor called, " << name << " assigned\e[0m" << std::endl;
 }
 

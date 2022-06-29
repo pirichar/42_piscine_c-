@@ -10,7 +10,7 @@ ScavTrap::~ScavTrap(){
 	std::cout << "\e[0;35mScavTrap " << this->name << " destructor called\e[0m" << std::endl;
 }
 ScavTrap::ScavTrap(const ScavTrap& old_obj){
-	std::cout << "\e[0;35mScavTrap Copy constructor called actually cloning " << old_obj.name << " for you\e[0m" << std::endl;
+	std::cout << "\e[0;34mScavTrap Copy constructor called actually cloning " << old_obj.name << " for you\e[0m" << std::endl;
 	*this = old_obj;
 }
 ScavTrap& ScavTrap::operator=(const ScavTrap& obj){
