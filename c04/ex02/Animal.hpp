@@ -10,7 +10,7 @@ public:
     Animal(const Animal& old_obj);          // constructeur de recopie
     Animal& operator=(const Animal& obj);   // Operateur d'affectation
     virtual ~Animal();  // destructeur virtuel
-    virtual void makeSound() const;
+    virtual void makeSound() const = 0;
     std::string getType() const;
 
 protected:

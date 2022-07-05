@@ -28,8 +28,3 @@ Dog& Dog::operator=(const Dog& obj){
 void	Dog::makeSound() const{
 	std::cout << "🐕LOUD PEE NOISE; SHIT ITS ON YOUR LEG" << std::endl;
 }
-
-//make sound
-void	Dog::getType() const{
-	std::cout << this->type << std::endl;
-}

@@ -26,6 +26,7 @@ int main() {
 	const Animal* i = new Cat();
 
 	Dog dog;
+	// Animal jetaichoisi;
 
 	Dog petit_dog = dog;
 	

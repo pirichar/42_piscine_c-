@@ -27,8 +27,3 @@ WrongCat& WrongCat::operator=(const WrongCat& obj){
 	this->type = obj.type;
 	return *this;
 }
-
-//make sound
-void	WrongCat::getType() const{
-	std::cout << this->type << std::endl;
-}

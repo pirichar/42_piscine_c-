@@ -13,10 +13,6 @@ class Cat: public Animal{
 		virtual ~Cat(); //destructeur par virtuel
 		// void	makeSound() const;
 		virtual void	makeSound() const;
-		void	getType(void) const;
-	protected:
-		std::string type;
-
 };
 
 

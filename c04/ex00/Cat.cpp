@@ -34,8 +34,3 @@ void	Cat::makeSound() const{
 	std::cout << "🐈MIAWM" << std::endl;
 }
 
-
-//make sound
-void	Cat::getType() const{
-	std::cout << this->type << std::endl;
-}
