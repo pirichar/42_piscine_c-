@@ -14,6 +14,7 @@ class Form{
 				virtual const char* what() const throw();
 		};
 		Form();
+		Form(const std::string& name);
 		Form(const Form&);
 		Form& operator=(const Form&);
 		~Form();
