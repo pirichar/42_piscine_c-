@@ -1,20 +1,19 @@
 #include "Bureaucrat.hpp"
 
-// constructeur classe d'exception
-const char* Bureaucrat::GradeTooHighException::what() const throw() {
+//constructeur classe d'exception
+const char *Bureaucrat::GradeTooHighException::what() const  throw(){
     return "Asked grade is too high";
 }
 
-// constructeur classe d'exception
-const char* Bureaucrat::GradeTooLowException::what() const throw() {
+//constructeur classe d'exception
+const char *Bureaucrat::GradeTooLowException::what() const  throw(){
     return "Asked grade is too low";
 }
 
 // constructeur par défaut
 Bureaucrat::Bureaucrat() : name("John Doe"), grade(150) {}
-// constructeur avec nom
-Bureaucrat::Bureaucrat(const std::string& desired_name, unsigned int desired_grade)
-    : name(desired_name), grade(desired_grade) {
+//constructeur avec nom
+Bureaucrat::Bureaucrat(const std::string& desired_name, unsigned int desired_grade): name(desired_name), grade(desired_grade){
     if (desired_grade < 1)
         throw GradeTooLowException();
     if (desired_grade > 150)
@@ -57,7 +56,7 @@ int Bureaucrat::getGrade() const {
     return this->grade;
 }
 
-std::ostream& operator<<(std::ostream& s, const Bureaucrat& value) {
+std::ostream& operator<<(std::ostream& s, const Bureaucrat& value){
     s << value.getName() << " Bureaucrat grade = " << value.getGrade();
     return s;
 }
