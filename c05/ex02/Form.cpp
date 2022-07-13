@@ -1,11 +1,21 @@
 #include "Form.hpp"
 
 // constructeur par défaut
-Form::Form() : name("Default form"), is_signed(false), required_sign(150), required_execute(150) {}
+Form::Form()
+    : name("Default form"),
+      is_signed(false),
+      required_sign(150),
+      required_execute(150),
+      target("Default target") {}
 
 // constructeur avec noms et options
-Form::Form(const std::string& desired_name, unsigned int to_sign, unsigned int to_execute)
-    : name(desired_name), is_signed(false), required_sign(to_execute), required_execute(to_sign) {
+Form::Form(const std::string& desired_name, unsigned int to_sign, unsigned int to_execute,
+    const std::string& target)
+    : name(desired_name),
+      is_signed(false),
+      required_sign(to_execute),
+      required_execute(to_sign),
+      target(target) {
     checkGrades();
 }
 
@@ -24,6 +34,7 @@ Form& Form::operator=(const Form& obj) {
     checkGrades();
     return *this;
 }
+
 // destructeur par défaut
 Form::~Form() {}
 
@@ -31,6 +42,7 @@ Form::~Form() {}
 const char* Form::GradeTooHighException::what() const throw() {
     return ("User can't acces file, the grade is too high");
 }
+
 // classe d'exception too low
 const char* Form::GradeTooLowException::what() const throw() {
     return ("User can't access file, the grade is too low");
@@ -49,6 +61,10 @@ unsigned int Form::getRqeuiredToExecute() const {
 bool Form::getIsSigned() const {
     return this->is_signed;
 }
+const std::string& Form::getTarget() const {
+    return this->target;
+}
+
 /*Ajoutez également au Form une fonction membre beSigned() prenant un Bureaucrat en paramètre.
 Il doit changer le status du formulaire en signé si l’échelon du Bureaucrat est suffisant
 (supérieur ou égal à l’échelon requis).
@@ -62,6 +78,7 @@ void Form::beSigned(const Bureaucrat& valorous_Bureaucrat) {
     this->is_signed = true;
 }
 
+//Grade checking function instead of repeating code
 void Form::checkGrades() const {
     if (this->required_execute < 1) {
         throw GradeTooHighException();
@@ -75,7 +92,7 @@ void Form::checkGrades() const {
     }
 }
 
-// at the end we use a ternary operator 
+//<< operator overload to print out directly with cout
 std::ostream& operator<<(std::ostream& s, const Form& value) {
     s << value.getName() << " form require " << value.getRequiredToSign()
       << " to be signed and require " << value.getRqeuiredToExecute() << " to be executed and it "
