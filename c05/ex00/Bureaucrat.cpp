@@ -2,12 +2,12 @@
 
 // constructeur classe d'exception
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
-    return "Asked grade is too high";
+    return "Asked grade is too high, can't assign to user";
 }
 
 // constructeur classe d'exception
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
-    return "Asked grade is too low";
+    return "Asked grade is too low, can't assign to user";
 }
 
 // constructeur par défaut
@@ -16,17 +16,26 @@ Bureaucrat::Bureaucrat() : name("John Doe"), grade(150) {}
 Bureaucrat::Bureaucrat(const std::string& desired_name, unsigned int desired_grade)
     : name(desired_name), grade(desired_grade) {
     if (desired_grade < 1)
-        throw GradeTooLowException();
-    if (desired_grade > 150)
         throw GradeTooHighException();
+    if (desired_grade > 150)
+        throw GradeTooLowException();
 }
 // constructeur de recopie
-Bureaucrat::Bureaucrat(const Bureaucrat& obj) {
+Bureaucrat::Bureaucrat(const Bureaucrat& obj) : name(obj.name), grade(obj.grade) {
+    if (this->grade < 1)
+        throw GradeTooHighException();
+    if (this->grade > 150)
+        throw GradeTooLowException();
     *this = obj;
 }
 
 // overload operator
-Bureaucrat& Bureaucrat::operator=(const Bureaucrat&) {
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat& obj) {
+    this->grade = obj.grade;
+    if (this->grade < 1)
+        throw GradeTooHighException();
+    if (this->grade > 150)
+        throw GradeTooLowException();
     return *this;
 }
 

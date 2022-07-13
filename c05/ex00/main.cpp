@@ -7,15 +7,14 @@ int main() {
     Bureaucrat steve;
     Bureaucrat steven("Steven", 10);
     std::cout << steve << std::endl;
-    std::cout << steve.getName() << " started with grade = " << steve.getGrade() << std::endl;
-    std::cout << steven.getName() << " started with grade = " << steven.getGrade() << std::endl;
+    std::cout << steven << std::endl;
 
     std::cout << "--------Now I try to add 100 to the grade of everyone--------" << std::endl;
     try {
         steve.grade_p(100);
-        std::cout << steve.getName() << " is now at grade = " << steve.getGrade() << std::endl;
+        std::cout << steve << std::endl;
         steven.grade_p(100);
-        std::cout << steven.getName() << " is now at grade = " << steven.getGrade() << std::endl;
+        std::cout << steven << std::endl;
     } catch (Bureaucrat::GradeTooHighException& ex) {
         std::cout << ex.what() << std::endl;
     }
@@ -23,9 +22,9 @@ int main() {
     std::cout << "--------Now I try to remove 100 to the grade of everyone--------" << std::endl;
     try {
         steve.grade_m(100);
-        std::cout << steve.getName() << " is now at grade = " << steve.getGrade() << std::endl;
+        std::cout << steve << std::endl;
         steven.grade_m(100);
-        std::cout << steven.getName() << " is now at grade = " << steven.getGrade() << std::endl;
+        std::cout << steven << std::endl;
     } catch (std::exception& ex) {
         std::cout << ex.what() << std::endl;
     }
@@ -33,10 +32,9 @@ int main() {
     std::cout << "--------Everyone is bad at his job I TRY TO DO IT AGAIN--------" << std::endl;
     try {
         steve.grade_m(100);
-        std::cout << steve.getName() << " is now at grade = " << steve.getGrade() << std::endl;
+        std::cout << steve << std::endl;
         steven.grade_m(100);
-        std::cout << steven.getName() << " is now at grade = " << steven.getGrade() << std::endl;
-        std::cout << "But nothing have changed..... god damn Unions" << std::endl;
+        std::cout << steven << std::endl;
     } catch (Bureaucrat::GradeTooLowException& ex) {
         std::cout << ex.what() << std::endl;
     }
