@@ -5,7 +5,7 @@ Form::Form() : name("Default form"), is_signed(false), required_sign(150), requi
 
 // constructeur avec noms et options
 Form::Form(const std::string& desired_name, unsigned int to_sign, unsigned int to_execute)
-    : name(desired_name), is_signed(false), required_sign(to_execute), required_execute(to_sign) {
+    : name(desired_name), is_signed(false), required_sign(to_sign), required_execute(to_execute) {
     checkGrades();
 }
 

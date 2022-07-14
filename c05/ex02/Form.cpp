@@ -3,19 +3,19 @@
 // constructeur par défaut
 Form::Form()
     : name("Default form"),
+      target("Default target"),
       is_signed(false),
       required_sign(150),
-      required_execute(150),
-      target("Default target") {}
+      required_execute(150) {}
 
 // constructeur avec noms et options
 Form::Form(const std::string& desired_name, unsigned int to_sign, unsigned int to_execute,
     const std::string& target)
     : name(desired_name),
+      target(target),
       is_signed(false),
-      required_sign(to_execute),
-      required_execute(to_sign),
-      target(target) {
+      required_sign(to_sign),
+      required_execute(to_execute) {
     checkGrades();
 }
 
@@ -46,6 +46,10 @@ const char* Form::GradeTooHighException::what() const throw() {
 // classe d'exception too low
 const char* Form::GradeTooLowException::what() const throw() {
     return ("User can't access file, the grade is too low");
+}
+// classe d'exception too low
+const char* Form::FormNotSigned::what() const throw() {
+    return ("The form isn't signed yet");
 }
 
 // getters and setters
@@ -78,7 +82,7 @@ void Form::beSigned(const Bureaucrat& valorous_Bureaucrat) {
     this->is_signed = true;
 }
 
-//Grade checking function instead of repeating code
+// Grade checking function instead of repeating code
 void Form::checkGrades() const {
     if (this->required_execute < 1) {
         throw GradeTooHighException();
@@ -91,7 +95,12 @@ void Form::checkGrades() const {
         throw GradeTooLowException();
     }
 }
-
+void Form::validateExecutorAccess(const Bureaucrat& executor) const {
+    if (this->is_signed == false)
+        throw Form::FormNotSigned();
+    if (executor.getGrade() > this->required_execute)
+        throw Form::GradeTooLowException();
+}
 //<< operator overload to print out directly with cout
 std::ostream& operator<<(std::ostream& s, const Form& value) {
     s << value.getName() << " form require " << value.getRequiredToSign()

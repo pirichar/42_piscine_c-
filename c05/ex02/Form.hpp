@@ -14,6 +14,10 @@ public:
     public:
         virtual const char* what() const throw();
     };
+    class FormNotSigned : public std::exception {
+    public:
+        virtual const char* what() const throw();
+    };
     // coplien stuff
     Form();
     Form(const std::string& name, unsigned int to_sign, unsigned int to_execute,
@@ -30,7 +34,10 @@ public:
     const std::string& getTarget() const;
 
     // new execute function
-    virtual void execute(Bureaucrat const& executor) = 0;
+    virtual void execute(Bureaucrat const& executor) const = 0;
+
+protected:
+    void validateExecutorAccess(const Bureaucrat& executor) const;
 
 private:
     const std::string  name;

@@ -1,5 +1,7 @@
 #include "Bureaucrat.hpp"
 
+#include <exception>
+
 #include "Form.hpp"
 
 // constructeur classe d'exception
@@ -73,6 +75,7 @@ std::ostream& operator<<(std::ostream& s, const Bureaucrat& value) {
     return s;
 }
 
+// form functions
 void Bureaucrat::signForm(Form& form) const {
     try {
         form.beSigned(*this);
@@ -80,5 +83,14 @@ void Bureaucrat::signForm(Form& form) const {
     } catch (std::exception& ex) {
         std::cout << this->getName() << " could no sign " << form.getName() << " because "
                   << ex.what() << std::endl;
+    }
+}
+
+void Bureaucrat::executeForm(const Form& form) const {
+    try {
+        form.execute(*this);
+        std::cout << this->getName() << " executed " << form.getName() << std::endl;
+    } catch (std::exception& ex) {
+        std::cout << this->getName() << " could not execute " << form.getName() << std::endl;
     }
 }

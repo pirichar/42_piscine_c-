@@ -29,6 +29,7 @@ public:
     void         grade_m(int points);
     unsigned int getGrade() const;
     void         signForm(Form& form) const;
+    void         executeForm(Form const& form) const;
 
 private:
     std::string name;
