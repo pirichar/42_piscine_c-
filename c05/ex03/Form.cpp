@@ -96,7 +96,7 @@ void Form::checkGrades() const {
     }
 }
 
-//function called by every subForms in their execute function
+//function called by every subForms in the execute function
 void Form::validateExecutorAccess(const Bureaucrat& executor) const {
     if (this->is_signed == false)
         throw Form::FormNotSigned();
