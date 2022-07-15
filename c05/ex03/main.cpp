@@ -1,4 +1,6 @@
 #include <exception>
+#include <cstdlib>
+#include <ctime>
 
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
@@ -8,6 +10,7 @@
 #include "Intern.hpp"
 
 int main() {
+    srand(time(NULL));
     std::cout << "---------------------creating Bureaucrats---------------------" << std::endl;
     Bureaucrat bur("Toby", 150);
     Bureaucrat bur1("Claris", 138);
