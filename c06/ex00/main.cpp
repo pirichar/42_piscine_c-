@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "ZeConverter.hpp"
 
 
 int main(int argc, char **argv){
@@ -9,7 +10,7 @@ int main(int argc, char **argv){
 	if (argv[1] == NULL){
 		std::cerr << "Please provide a literal that is not an empty string" << std::endl;
 	}
-
+	ZeConverter conv(argv[1]);
 	//char
 	//int
 	//float
