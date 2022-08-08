@@ -6,7 +6,7 @@
 /*   By: pirichar <pirichar@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 13:25:13 by pirichar          #+#    #+#             */
-/*   Updated: 2022/07/25 13:28:34 by pirichar         ###   ########.fr       */
+/*   Updated: 2022/08/08 12:24:13 by pirichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ void ZeConverter::parse() {
         charInput = input[0];
         type = TypeChar;
     } else {
-        // type float
+    // type float
         if (input.find('.') != std::string::npos || is_a_pseudo(input)) {
             if (input == "nanf" || input == "-inff" || input == "+inff") {
                 input.erase(input.end() - 1);
@@ -136,7 +136,7 @@ void ZeConverter::parse() {
                 type = TypeFloat;
                 input.erase(input.end() - 1);
                 floatInput = std::strtof(input.c_str(), &endPtr);
-                // type double
+    // type double
             } else {
                 type = TypeDouble;
                 doubleInput = std::strtod(input.c_str(), &endPtr);
@@ -145,7 +145,7 @@ void ZeConverter::parse() {
             if (*endPtr != '\0') {
                 error = true;
             }
-            // type Int
+    // type Int
         } else {
             type = TypeInt;
             intInput = static_cast<int>(std::strtol(input.c_str(), &endPtr, 10));
